@@ -98,7 +98,7 @@ function PreviewList({
         >
             {fileObjects.map((fileObject, i) => {
                 // eslint-disable-next-line no-unused-expressions
-                isImage(fileObject) ?
+                isImage(fileObject.file) ?
                     <Grid
                         xs={4}
                         {...previewGridProps.item}

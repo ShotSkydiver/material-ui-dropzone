@@ -196,7 +196,7 @@ function PreviewList(_ref2) {
     var _fileObject$file$name2, _fileObject$file2, _fileObject$file$name3, _fileObject$file3;
 
     // eslint-disable-next-line no-unused-expressions
-    isImage(fileObject) ? /*#__PURE__*/React.createElement(Grid, _extends({
+    isImage(fileObject.file) ? /*#__PURE__*/React.createElement(Grid, _extends({
       xs: 4
     }, previewGridProps.item, {
       item: true,
