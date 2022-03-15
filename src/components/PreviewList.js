@@ -64,11 +64,7 @@ function PreviewList({
     getPreviewIcon,
 }) {
     if (useChipsForPreview) {
-        console.log(fileObjects);
-        fileObjects.sort(function(x, y) {
-            return x.file.type.toString() - y.file.type.toString();
-        });
-        console.log(fileObjects);
+        fileObjects.sort((a, b) => (a.file.type < b.file.type) ? 1 : ((a.file.type > b.file.type) ? -1 : 0));
         return (
             <Grid
                 spacing={1}

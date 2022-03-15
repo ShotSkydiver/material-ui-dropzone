@@ -164,11 +164,9 @@ function PreviewList(_ref2) {
       getPreviewIcon = _ref2.getPreviewIcon;
 
   if (useChipsForPreview) {
-    console.log(fileObjects);
-    fileObjects.sort(function (x, y) {
-      return x.file.type.toString() - y.file.type.toString();
+    fileObjects.sort(function (a, b) {
+      return a.file.type < b.file.type ? 1 : a.file.type > b.file.type ? -1 : 0;
     });
-    console.log(fileObjects);
     return /*#__PURE__*/createElement(Grid, _extends({
       spacing: 1,
       direction: "row"
