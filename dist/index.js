@@ -173,7 +173,10 @@ function PreviewList(_ref2) {
       direction: "row"
     }, previewGridProps.container, {
       container: true,
-      className: clsx(classes.root, previewGridClasses.container)
+      className: clsx(classes.root, previewGridClasses.container),
+      style: {
+        flexBasis: 'auto'
+      }
     }), fileObjects.map(function (fileObject, i) {
       var _fileObject$file$name, _fileObject$file;
 
@@ -197,7 +200,10 @@ function PreviewList(_ref2) {
     spacing: 8
   }, previewGridProps.container, {
     container: true,
-    className: clsx(classes.root, previewGridClasses.container)
+    className: clsx(classes.root, previewGridClasses.container),
+    style: {
+      flexBasis: 'auto'
+    }
   }), fileObjects.map(function (fileObject, i) {
     var _fileObject$file$name2, _fileObject$file2;
 
@@ -206,7 +212,10 @@ function PreviewList(_ref2) {
     }, previewGridProps.item, {
       item: true,
       key: "".concat((_fileObject$file$name2 = (_fileObject$file2 = fileObject.file) === null || _fileObject$file2 === void 0 ? void 0 : _fileObject$file2.name) !== null && _fileObject$file$name2 !== void 0 ? _fileObject$file$name2 : 'file', "-").concat(i),
-      className: clsx(classes.imageContainer, previewGridClasses.item)
+      className: clsx(classes.imageContainer, previewGridClasses.item),
+      style: {
+        flexBasis: 'auto'
+      }
     }), getPreviewIcon(fileObject, classes), showFileNames && /*#__PURE__*/React.createElement(Typography, {
       variant: "body1",
       component: "p"
