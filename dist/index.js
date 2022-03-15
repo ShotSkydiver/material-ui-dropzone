@@ -19,7 +19,6 @@ var React = require('react');
 var Snackbar = _interopDefault(require('@mui/material/Snackbar'));
 var Typography = _interopDefault(require('@mui/material/Typography'));
 var styles$2 = require('@mui/styles');
-var AttachFileIcon = _interopDefault(require('@mui/icons-material/AttachFile'));
 var CloudUploadIcon = _interopDefault(require('@mui/icons-material/CloudUpload'));
 var Alert = _interopDefault(require('@mui/material/Alert'));
 var clsx = _interopDefault(require('clsx'));
@@ -293,15 +292,17 @@ var defaultSnackbarAnchorOrigin = {
 var defaultGetPreviewIcon = function defaultGetPreviewIcon(fileObject, classes) {
   if (isImage(fileObject.file)) {
     return /*#__PURE__*/React.createElement("img", {
+      width: "100px",
       className: classes.image,
       role: "presentation",
       src: fileObject.data
     });
   }
 
-  return /*#__PURE__*/React.createElement(AttachFileIcon, {
-    className: classes.image
-  });
+  return /*#__PURE__*/React.createElement(Typography, {
+    variant: "body1",
+    component: "p"
+  }, fileObject.file.name);
 };
 /**
  * This components creates a Material-UI Dropzone, with previews and snackbar notifications.

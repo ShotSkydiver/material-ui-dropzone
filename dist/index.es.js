@@ -13,7 +13,6 @@ import { createElement, Fragment, PureComponent } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Typography from '@mui/material/Typography';
 import { withStyles } from '@mui/styles';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Alert from '@mui/material/Alert';
 import clsx from 'clsx';
@@ -287,15 +286,17 @@ var defaultSnackbarAnchorOrigin = {
 var defaultGetPreviewIcon = function defaultGetPreviewIcon(fileObject, classes) {
   if (isImage(fileObject.file)) {
     return /*#__PURE__*/createElement("img", {
+      width: "100px",
       className: classes.image,
       role: "presentation",
       src: fileObject.data
     });
   }
 
-  return /*#__PURE__*/createElement(AttachFileIcon, {
-    className: classes.image
-  });
+  return /*#__PURE__*/createElement(Typography, {
+    variant: "body1",
+    component: "p"
+  }, fileObject.file.name);
 };
 /**
  * This components creates a Material-UI Dropzone, with previews and snackbar notifications.
