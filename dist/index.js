@@ -168,22 +168,19 @@ function PreviewList(_ref2) {
       getPreviewIcon = _ref2.getPreviewIcon;
 
   if (useChipsForPreview) {
-    fileObjects.sort(function (a, b) {
-      return a.file.type < b.file.type ? 1 : a.file.type > b.file.type ? -1 : 0;
-    });
     return /*#__PURE__*/React.createElement(Grid, _extends({
       spacing: 1,
       direction: "row"
     }, previewGridProps.container, {
       container: true,
-      className: classes.root
+      className: clsx(classes.root, previewGridClasses.container)
     }), fileObjects.map(function (fileObject, i) {
       var _fileObject$file$name, _fileObject$file;
 
       return /*#__PURE__*/React.createElement(Grid, _extends({}, previewGridProps.item, {
         item: true,
         key: "".concat((_fileObject$file$name = (_fileObject$file = fileObject.file) === null || _fileObject$file === void 0 ? void 0 : _fileObject$file.name) !== null && _fileObject$file$name !== void 0 ? _fileObject$file$name : 'file', "-").concat(i),
-        className: clsx(classes.imageContainer, previewGridClasses.item)
+        className: classes.imageContainer
       }), /*#__PURE__*/React.createElement(Chip, _extends({
         variant: "outlined"
       }, previewChipProps, {

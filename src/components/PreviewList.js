@@ -62,14 +62,13 @@ function PreviewList({
     getPreviewIcon,
 }) {
     if (useChipsForPreview) {
-        fileObjects.sort((a, b) => (a.file.type < b.file.type) ? 1 : ((a.file.type > b.file.type) ? -1 : 0));
         return (
             <Grid
                 spacing={1}
                 direction="row"
                 {...previewGridProps.container}
                 container={true}
-                className={classes.root}
+                className={clsx(classes.root, previewGridClasses.container)}
             >
                 {fileObjects.map((fileObject, i) => {
                     return (
@@ -77,7 +76,7 @@ function PreviewList({
                             {...previewGridProps.item}
                             item={true}
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
-                            className={clsx(classes.imageContainer, previewGridClasses.item)}
+                            className={classes.imageContainer}
                         >
                             <Chip
                                 variant="outlined"

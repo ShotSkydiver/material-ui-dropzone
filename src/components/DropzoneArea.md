@@ -50,7 +50,7 @@ const handlePreviewIcon = (fileObject, classes) => {
     case "application/pdf":
       return <PictureAsPdf {...iconProps} />
     default:
-      return <Typography variant="body1" component="p">
+      return <Typography {...iconProps} variant="body1" component="p">
                 {fileObject.file.name}
               </Typography>
   }
