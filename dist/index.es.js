@@ -148,10 +148,6 @@ var styles = function styles(_ref) {
   };
 };
 
-function isFileImage(file) {
-  return file && file.type.split('/')[0] === 'image';
-}
-
 function PreviewList(_ref2) {
   var fileObjects = _ref2.fileObjects,
       handleRemove = _ref2.handleRemove,
@@ -194,7 +190,7 @@ function PreviewList(_ref2) {
     var _fileObject$file$name2, _fileObject$file2, _fileObject$file$name3, _fileObject$file3;
 
     // eslint-disable-next-line no-unused-expressions
-    isFileImage(fileObject) ? /*#__PURE__*/createElement(Grid, _extends({
+    isImage(fileObject) ? /*#__PURE__*/createElement(Grid, _extends({
       xs: 4
     }, previewGridProps.item, {
       item: true,
