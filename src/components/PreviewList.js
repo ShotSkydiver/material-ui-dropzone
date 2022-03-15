@@ -9,9 +9,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 const styles = ({palette, shape, spacing}) => ({
-    root: {
-        flexBasis: 'auto',
-    },
+    root: {},
     imageContainer: {
         display: 'flex',
         alignItems: 'flex-start',
@@ -79,7 +77,7 @@ function PreviewList({
                             {...previewGridProps.item}
                             item={true}
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
-                            className={classes.imageContainer}
+                            className={clsx(classes.imageContainer, previewGridClasses.item)}
                         >
                             <Chip
                                 variant="outlined"

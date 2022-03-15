@@ -108,9 +108,7 @@ var styles = function styles(_ref) {
       shape = _ref.shape,
       spacing = _ref.spacing;
   return {
-    root: {
-      flexBasis: 'auto'
-    },
+    root: {},
     imageContainer: {
       display: 'flex',
       alignItems: 'flex-start',
@@ -179,7 +177,7 @@ function PreviewList(_ref2) {
       return /*#__PURE__*/createElement(Grid, _extends({}, previewGridProps.item, {
         item: true,
         key: "".concat((_fileObject$file$name = (_fileObject$file = fileObject.file) === null || _fileObject$file === void 0 ? void 0 : _fileObject$file.name) !== null && _fileObject$file$name !== void 0 ? _fileObject$file$name : 'file', "-").concat(i),
-        className: classes.imageContainer
+        className: clsx(classes.imageContainer, previewGridClasses.item)
       }), /*#__PURE__*/createElement(Chip, _extends({
         variant: "outlined"
       }, previewChipProps, {
