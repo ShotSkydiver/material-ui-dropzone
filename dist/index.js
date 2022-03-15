@@ -168,6 +168,9 @@ function PreviewList(_ref2) {
       getPreviewIcon = _ref2.getPreviewIcon;
 
   if (useChipsForPreview) {
+    fileObjects.sort(function (a, b) {
+      return a.file.type < b.file.type;
+    });
     return /*#__PURE__*/React.createElement(Grid, _extends({
       spacing: 1,
       direction: "row"
@@ -180,7 +183,10 @@ function PreviewList(_ref2) {
       return /*#__PURE__*/React.createElement(Grid, _extends({}, previewGridProps.item, {
         item: true,
         key: "".concat((_fileObject$file$name = (_fileObject$file = fileObject.file) === null || _fileObject$file === void 0 ? void 0 : _fileObject$file.name) !== null && _fileObject$file$name !== void 0 ? _fileObject$file$name : 'file', "-").concat(i),
-        className: classes.imageContainer
+        className: classes.imageContainer,
+        style: {
+          flexBasis: 'auto'
+        }
       }), /*#__PURE__*/React.createElement(Chip, _extends({
         variant: "outlined"
       }, previewChipProps, {
@@ -188,9 +194,11 @@ function PreviewList(_ref2) {
         onDelete: handleRemove(i)
       })));
     }));
-  } // fileObjects.sort((a,b) => )
+  }
 
-
+  fileObjects.sort(function (a, b) {
+    return a.file.type < b.file.type;
+  });
   return /*#__PURE__*/React.createElement(Grid, _extends({
     spacing: 8
   }, previewGridProps.container, {

@@ -62,6 +62,7 @@ function PreviewList({
     getPreviewIcon,
 }) {
     if (useChipsForPreview) {
+        fileObjects.sort((a, b) => a.file.type < b.file.type);
         return (
             <Grid
                 spacing={1}
@@ -77,6 +78,7 @@ function PreviewList({
                             item={true}
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
                             className={classes.imageContainer}
+                            style={{flexBasis: 'auto'}}
                         >
                             <Chip
                                 variant="outlined"
@@ -91,7 +93,7 @@ function PreviewList({
         );
     }
 
-    // fileObjects.sort((a,b) => )
+    fileObjects.sort((a, b) => a.file.type < b.file.type);
     return (
         <Grid
             spacing={8}
