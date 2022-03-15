@@ -11,6 +11,9 @@ import PropTypes from 'prop-types';
 const styles = ({palette, shape, spacing}) => ({
     root: {},
     imageContainer: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        top: spacing(1),
         position: 'relative',
         zIndex: 10,
         textAlign: 'center',
@@ -35,9 +38,9 @@ const styles = ({palette, shape, spacing}) => ({
     },
     removeButton: {
         transition: '.5s ease',
-        position: 'absolute',
+        position: 'relative',
         opacity: 0,
-        top: spacing(-1),
+        top: spacing(-6),
         right: spacing(-1),
         width: 40,
         height: 40,
@@ -65,7 +68,7 @@ function PreviewList({
                 direction="row"
                 {...previewGridProps.container}
                 container={true}
-                className={clsx(classes.root, previewGridClasses.container)}
+                className={classes.root}
             >
                 {fileObjects.map((fileObject, i) => {
                     return (

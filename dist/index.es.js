@@ -110,6 +110,9 @@ var styles = function styles(_ref) {
   return {
     root: {},
     imageContainer: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      top: spacing(1),
       position: 'relative',
       zIndex: 10,
       textAlign: 'center',
@@ -134,9 +137,9 @@ var styles = function styles(_ref) {
     },
     removeButton: {
       transition: '.5s ease',
-      position: 'absolute',
+      position: 'relative',
       opacity: 0,
-      top: spacing(-1),
+      top: spacing(-6),
       right: spacing(-1),
       width: 40,
       height: 40,
@@ -164,7 +167,7 @@ function PreviewList(_ref2) {
       direction: "row"
     }, previewGridProps.container, {
       container: true,
-      className: clsx(classes.root, previewGridClasses.container)
+      className: classes.root
     }), fileObjects.map(function (fileObject, i) {
       var _fileObject$file$name, _fileObject$file;
 
