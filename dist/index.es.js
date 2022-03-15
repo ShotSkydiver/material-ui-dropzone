@@ -162,6 +162,9 @@ function PreviewList(_ref2) {
       previewGridProps = _ref2.previewGridProps,
       classes = _ref2.classes,
       getPreviewIcon = _ref2.getPreviewIcon;
+  fileObjects.sort(function (x, y) {
+    return x.file.type.toString() - y.file.type.toString();
+  });
 
   if (useChipsForPreview) {
     return /*#__PURE__*/createElement(Grid, _extends({

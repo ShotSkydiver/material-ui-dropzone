@@ -63,6 +63,10 @@ function PreviewList({
     classes,
     getPreviewIcon,
 }) {
+    fileObjects.sort(function(x, y) {
+        return x.file.type.toString() - y.file.type.toString();
+    });
+
     if (useChipsForPreview) {
         return (
             <Grid
