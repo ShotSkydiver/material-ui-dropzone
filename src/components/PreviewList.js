@@ -3,7 +3,6 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {withStyles} from '@mui/styles';
-import {isImage} from '../helpers';
 import DeleteIcon from '@mui/icons-material/Delete';
 import clsx from 'clsx';
 import * as React from 'react';
@@ -51,7 +50,7 @@ const styles = ({palette, shape, spacing}) => ({
 function PreviewList({
     fileObjects,
     handleRemove,
-    // showFileNames,
+    showFileNames,
     useChipsForPreview,
     previewChipProps,
     previewGridClasses,
@@ -97,8 +96,7 @@ function PreviewList({
             className={clsx(classes.root, previewGridClasses.container)}
         >
             {fileObjects.map((fileObject, i) => {
-                // eslint-disable-next-line no-unused-expressions
-                isImage(fileObject.file) ?
+                return (
                     <Grid
                         xs={4}
                         {...previewGridProps.item}
@@ -108,7 +106,7 @@ function PreviewList({
                     >
                         {getPreviewIcon(fileObject, classes)}
 
-                        {(
+                        {showFileNames && (
                             <Typography variant="body1" component="p">
                                 {fileObject.file.name}
                             </Typography>
@@ -121,32 +119,8 @@ function PreviewList({
                         >
                             <DeleteIcon />
                         </Fab>
-                    </Grid> :
-                    (
-                        <Grid
-                            xs={4}
-                            {...previewGridProps.item}
-                            item={true}
-                            key={`${fileObject.file?.name ?? 'file'}-${i}`}
-                            className={clsx(classes.imageContainer, previewGridClasses.item)}
-                        >
-                            {getPreviewIcon(fileObject, classes)}
-
-                            {(
-                                <Typography variant="body1" component="p">
-                                    {fileObject.file.name}
-                                </Typography>
-                            )}
-
-                            <Fab
-                                onClick={handleRemove(i)}
-                                aria-label="Delete"
-                                className={classes.removeButton}
-                            >
-                                <DeleteIcon />
-                            </Fab>
-                        </Grid>
-                    );
+                    </Grid>
+                );
             })}
         </Grid>
     );
