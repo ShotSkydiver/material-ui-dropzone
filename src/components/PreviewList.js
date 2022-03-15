@@ -98,7 +98,6 @@ function PreviewList({
             {...previewGridProps.container}
             container={true}
             className={clsx(classes.root, previewGridClasses.container)}
-            style={{flexBasis: 'auto'}}
         >
             {fileObjects.map((fileObject, i) => {
                 return (
@@ -108,6 +107,7 @@ function PreviewList({
                         item={true}
                         key={`${fileObject.file?.name ?? 'file'}-${i}`}
                         className={clsx(classes.imageContainer, previewGridClasses.item)}
+                        style={{flexBasis: 'auto'}}
                     >
                         {getPreviewIcon(fileObject, classes)}
 
