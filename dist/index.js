@@ -202,7 +202,10 @@ function PreviewList(_ref2) {
       item: true,
       key: "".concat((_fileObject$file$name2 = (_fileObject$file2 = fileObject.file) === null || _fileObject$file2 === void 0 ? void 0 : _fileObject$file2.name) !== null && _fileObject$file$name2 !== void 0 ? _fileObject$file$name2 : 'file', "-").concat(i),
       className: clsx(classes.imageContainer, previewGridClasses.item)
-    }), getPreviewIcon(fileObject, classes), /*#__PURE__*/React.createElement(Fab, {
+    }), getPreviewIcon(fileObject, classes), /*#__PURE__*/React.createElement(Typography, {
+      variant: "body1",
+      component: "p"
+    }, fileObject.file.name), /*#__PURE__*/React.createElement(Fab, {
       onClick: handleRemove(i),
       "aria-label": "Delete",
       className: classes.removeButton
@@ -212,7 +215,7 @@ function PreviewList(_ref2) {
       item: true,
       key: "".concat((_fileObject$file$name3 = (_fileObject$file3 = fileObject.file) === null || _fileObject$file3 === void 0 ? void 0 : _fileObject$file3.name) !== null && _fileObject$file$name3 !== void 0 ? _fileObject$file$name3 : 'file', "-").concat(i),
       className: clsx(classes.imageContainer, previewGridClasses.item)
-    }), /*#__PURE__*/React.createElement(Typography, {
+    }), getPreviewIcon(fileObject, classes), /*#__PURE__*/React.createElement(Typography, {
       variant: "body1",
       component: "p"
     }, fileObject.file.name), /*#__PURE__*/React.createElement(Fab, {

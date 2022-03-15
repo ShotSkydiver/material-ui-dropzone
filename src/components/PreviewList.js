@@ -108,6 +108,12 @@ function PreviewList({
                     >
                         {getPreviewIcon(fileObject, classes)}
 
+                        {(
+                            <Typography variant="body1" component="p">
+                                {fileObject.file.name}
+                            </Typography>
+                        )}
+
                         <Fab
                             onClick={handleRemove(i)}
                             aria-label="Delete"
@@ -124,6 +130,8 @@ function PreviewList({
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
                             className={clsx(classes.imageContainer, previewGridClasses.item)}
                         >
+                            {getPreviewIcon(fileObject, classes)}
+
                             {(
                                 <Typography variant="body1" component="p">
                                     {fileObject.file.name}
