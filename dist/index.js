@@ -108,7 +108,7 @@ function readFile(file) {
   });
 }
 
-var _DeleteIcon;
+var _DeleteIcon, _DeleteIcon2;
 
 var styles = function styles(_ref) {
   var palette = _ref.palette,
@@ -154,10 +154,13 @@ var styles = function styles(_ref) {
   };
 };
 
+function isFileImage(file) {
+  return file && file.type.split('/')[0] === 'image';
+}
+
 function PreviewList(_ref2) {
   var fileObjects = _ref2.fileObjects,
       handleRemove = _ref2.handleRemove,
-      showFileNames = _ref2.showFileNames,
       useChipsForPreview = _ref2.useChipsForPreview,
       previewChipProps = _ref2.previewChipProps,
       previewGridClasses = _ref2.previewGridClasses,
@@ -194,22 +197,33 @@ function PreviewList(_ref2) {
     container: true,
     className: clsx(classes.root, previewGridClasses.container)
   }), fileObjects.map(function (fileObject, i) {
-    var _fileObject$file$name2, _fileObject$file2;
+    var _fileObject$file$name2, _fileObject$file2, _fileObject$file$name3, _fileObject$file3;
 
-    return /*#__PURE__*/React.createElement(Grid, _extends({
+    // eslint-disable-next-line no-unused-expressions
+    isFileImage(fileObject) ? /*#__PURE__*/React.createElement(Grid, _extends({
       xs: 4
     }, previewGridProps.item, {
       item: true,
       key: "".concat((_fileObject$file$name2 = (_fileObject$file2 = fileObject.file) === null || _fileObject$file2 === void 0 ? void 0 : _fileObject$file2.name) !== null && _fileObject$file$name2 !== void 0 ? _fileObject$file$name2 : 'file', "-").concat(i),
       className: clsx(classes.imageContainer, previewGridClasses.item)
-    }), getPreviewIcon(fileObject, classes), showFileNames && /*#__PURE__*/React.createElement(Typography, {
+    }), getPreviewIcon(fileObject, classes), /*#__PURE__*/React.createElement(Fab, {
+      onClick: handleRemove(i),
+      "aria-label": "Delete",
+      className: classes.removeButton
+    }, _DeleteIcon || (_DeleteIcon = /*#__PURE__*/React.createElement(DeleteIcon, null)))) : /*#__PURE__*/React.createElement(Grid, _extends({
+      xs: 4
+    }, previewGridProps.item, {
+      item: true,
+      key: "".concat((_fileObject$file$name3 = (_fileObject$file3 = fileObject.file) === null || _fileObject$file3 === void 0 ? void 0 : _fileObject$file3.name) !== null && _fileObject$file$name3 !== void 0 ? _fileObject$file$name3 : 'file', "-").concat(i),
+      className: clsx(classes.imageContainer, previewGridClasses.item)
+    }), /*#__PURE__*/React.createElement(Typography, {
       variant: "body1",
       component: "p"
     }, fileObject.file.name), /*#__PURE__*/React.createElement(Fab, {
       onClick: handleRemove(i),
       "aria-label": "Delete",
       className: classes.removeButton
-    }, _DeleteIcon || (_DeleteIcon = /*#__PURE__*/React.createElement(DeleteIcon, null))));
+    }, _DeleteIcon2 || (_DeleteIcon2 = /*#__PURE__*/React.createElement(DeleteIcon, null))));
   }));
 }
 
