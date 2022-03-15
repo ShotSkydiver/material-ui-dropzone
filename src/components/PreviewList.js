@@ -77,6 +77,7 @@ function PreviewList({
                             item={true}
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
                             className={classes.imageContainer}
+                            style={{flexBasis: 'auto'}}
                         >
                             <Chip
                                 variant="outlined"
