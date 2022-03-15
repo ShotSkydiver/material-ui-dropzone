@@ -3,6 +3,7 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {withStyles} from '@mui/styles';
+import {isImage} from '../helpers';
 import DeleteIcon from '@mui/icons-material/Delete';
 import clsx from 'clsx';
 import * as React from 'react';
@@ -46,10 +47,6 @@ const styles = ({palette, shape, spacing}) => ({
         },
     },
 });
-
-function isFileImage(file) {
-    return file && file.type.split('/')[0] === 'image';
-}
 
 function PreviewList({
     fileObjects,
@@ -101,7 +98,7 @@ function PreviewList({
         >
             {fileObjects.map((fileObject, i) => {
                 // eslint-disable-next-line no-unused-expressions
-                isFileImage(fileObject) ?
+                isImage(fileObject) ?
                     <Grid
                         xs={4}
                         {...previewGridProps.item}
