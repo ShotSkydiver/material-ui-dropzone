@@ -9,7 +9,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 const styles = ({palette, shape, spacing}) => ({
-    root: {},
+    root: {
+        flexBasis: 'auto',
+    },
     imageContainer: {
         display: 'flex',
         alignItems: 'flex-start',

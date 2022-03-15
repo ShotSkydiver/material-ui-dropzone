@@ -108,7 +108,9 @@ var styles = function styles(_ref) {
       shape = _ref.shape,
       spacing = _ref.spacing;
   return {
-    root: {},
+    root: {
+      flexBasis: 'auto'
+    },
     imageContainer: {
       display: 'flex',
       alignItems: 'flex-start',
