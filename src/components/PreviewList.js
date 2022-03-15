@@ -47,10 +47,14 @@ const styles = ({palette, shape, spacing}) => ({
     },
 });
 
+function isFileImage(file) {
+    return file && file.type.split('/')[0] === 'image';
+}
+
 function PreviewList({
     fileObjects,
     handleRemove,
-    showFileNames,
+    // showFileNames,
     useChipsForPreview,
     previewChipProps,
     previewGridClasses,
@@ -96,7 +100,8 @@ function PreviewList({
             className={clsx(classes.root, previewGridClasses.container)}
         >
             {fileObjects.map((fileObject, i) => {
-                return (
+                // eslint-disable-next-line no-unused-expressions
+                isFileImage(fileObject) ?
                     <Grid
                         xs={4}
                         {...previewGridProps.item}
@@ -106,12 +111,6 @@ function PreviewList({
                     >
                         {getPreviewIcon(fileObject, classes)}
 
-                        {showFileNames && (
-                            <Typography variant="body1" component="p">
-                                {fileObject.file.name}
-                            </Typography>
-                        )}
-
                         <Fab
                             onClick={handleRemove(i)}
                             aria-label="Delete"
@@ -119,8 +118,30 @@ function PreviewList({
                         >
                             <DeleteIcon />
                         </Fab>
-                    </Grid>
-                );
+                    </Grid> :
+                    (
+                        <Grid
+                            xs={4}
+                            {...previewGridProps.item}
+                            item={true}
+                            key={`${fileObject.file?.name ?? 'file'}-${i}`}
+                            className={clsx(classes.imageContainer, previewGridClasses.item)}
+                        >
+                            {(
+                                <Typography variant="body1" component="p">
+                                    {fileObject.file.name}
+                                </Typography>
+                            )}
+
+                            <Fab
+                                onClick={handleRemove(i)}
+                                aria-label="Delete"
+                                className={classes.removeButton}
+                            >
+                                <DeleteIcon />
+                            </Fab>
+                        </Grid>
+                    );
             })}
         </Grid>
     );
