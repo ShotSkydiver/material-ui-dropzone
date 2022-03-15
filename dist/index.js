@@ -173,20 +173,14 @@ function PreviewList(_ref2) {
       direction: "row"
     }, previewGridProps.container, {
       container: true,
-      className: clsx(classes.root, previewGridClasses.container),
-      style: {
-        flexBasis: 'auto'
-      }
+      className: clsx(classes.root, previewGridClasses.container)
     }), fileObjects.map(function (fileObject, i) {
       var _fileObject$file$name, _fileObject$file;
 
       return /*#__PURE__*/React.createElement(Grid, _extends({}, previewGridProps.item, {
         item: true,
         key: "".concat((_fileObject$file$name = (_fileObject$file = fileObject.file) === null || _fileObject$file === void 0 ? void 0 : _fileObject$file.name) !== null && _fileObject$file$name !== void 0 ? _fileObject$file$name : 'file', "-").concat(i),
-        className: classes.imageContainer,
-        style: {
-          flexBasis: 'auto'
-        }
+        className: classes.imageContainer
       }), /*#__PURE__*/React.createElement(Chip, _extends({
         variant: "outlined"
       }, previewChipProps, {
@@ -194,7 +188,8 @@ function PreviewList(_ref2) {
         onDelete: handleRemove(i)
       })));
     }));
-  }
+  } // fileObjects.sort((a,b) => )
+
 
   return /*#__PURE__*/React.createElement(Grid, _extends({
     spacing: 8
@@ -212,10 +207,7 @@ function PreviewList(_ref2) {
     }, previewGridProps.item, {
       item: true,
       key: "".concat((_fileObject$file$name2 = (_fileObject$file2 = fileObject.file) === null || _fileObject$file2 === void 0 ? void 0 : _fileObject$file2.name) !== null && _fileObject$file$name2 !== void 0 ? _fileObject$file$name2 : 'file', "-").concat(i),
-      className: clsx(classes.imageContainer, previewGridClasses.item),
-      style: {
-        flexBasis: 'auto'
-      }
+      className: clsx(classes.imageContainer, previewGridClasses.item)
     }), getPreviewIcon(fileObject, classes), showFileNames && /*#__PURE__*/React.createElement(Typography, {
       variant: "body1",
       component: "p"
