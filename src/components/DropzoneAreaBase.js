@@ -1,7 +1,7 @@
 import Snackbar from '@mui/material/Snackbar';
 import Typography from '@mui/material/Typography';
 import {withStyles} from '@mui/styles';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+// import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Alert from '@mui/material/Alert';
 import clsx from 'clsx';
@@ -68,13 +68,16 @@ const defaultSnackbarAnchorOrigin = {
 const defaultGetPreviewIcon = (fileObject, classes) => {
     if (isImage(fileObject.file)) {
         return (<img
+            width="100px"
             className={classes.image}
             role="presentation"
             src={fileObject.data}
         />);
     }
 
-    return <AttachFileIcon className={classes.image} />;
+    return <Typography variant="body1" component="p">
+        {fileObject.file.name}
+    </Typography>;
 };
 
 /**

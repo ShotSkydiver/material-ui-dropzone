@@ -11,6 +11,9 @@ import PropTypes from 'prop-types';
 const styles = ({palette, shape, spacing}) => ({
     root: {},
     imageContainer: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        top: spacing(1),
         position: 'relative',
         zIndex: 10,
         textAlign: 'center',
@@ -35,9 +38,9 @@ const styles = ({palette, shape, spacing}) => ({
     },
     removeButton: {
         transition: '.5s ease',
-        position: 'absolute',
+        position: 'relative',
         opacity: 0,
-        top: spacing(-1),
+        top: spacing(-6),
         right: spacing(-1),
         width: 40,
         height: 40,
@@ -59,6 +62,7 @@ function PreviewList({
     getPreviewIcon,
 }) {
     if (useChipsForPreview) {
+        fileObjects.sort((a, b) => a.file.type < b.file.type);
         return (
             <Grid
                 spacing={1}
@@ -74,6 +78,7 @@ function PreviewList({
                             item={true}
                             key={`${fileObject.file?.name ?? 'file'}-${i}`}
                             className={classes.imageContainer}
+                            style={{flexBasis: 'auto'}}
                         >
                             <Chip
                                 variant="outlined"
@@ -88,6 +93,7 @@ function PreviewList({
         );
     }
 
+    fileObjects.sort((a, b) => a.file.type < b.file.type);
     return (
         <Grid
             spacing={8}
@@ -103,6 +109,7 @@ function PreviewList({
                         item={true}
                         key={`${fileObject.file?.name ?? 'file'}-${i}`}
                         className={clsx(classes.imageContainer, previewGridClasses.item)}
+                        style={{flexBasis: 'auto'}}
                     >
                         {getPreviewIcon(fileObject, classes)}
 

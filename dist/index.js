@@ -19,7 +19,6 @@ var React = require('react');
 var Snackbar = _interopDefault(require('@mui/material/Snackbar'));
 var Typography = _interopDefault(require('@mui/material/Typography'));
 var styles$2 = require('@mui/styles');
-var AttachFileIcon = _interopDefault(require('@mui/icons-material/AttachFile'));
 var CloudUploadIcon = _interopDefault(require('@mui/icons-material/CloudUpload'));
 var Alert = _interopDefault(require('@mui/material/Alert'));
 var clsx = _interopDefault(require('clsx'));
@@ -117,6 +116,9 @@ var styles = function styles(_ref) {
   return {
     root: {},
     imageContainer: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      top: spacing(1),
       position: 'relative',
       zIndex: 10,
       textAlign: 'center',
@@ -141,9 +143,9 @@ var styles = function styles(_ref) {
     },
     removeButton: {
       transition: '.5s ease',
-      position: 'absolute',
+      position: 'relative',
       opacity: 0,
-      top: spacing(-1),
+      top: spacing(-6),
       right: spacing(-1),
       width: 40,
       height: 40,
@@ -166,6 +168,9 @@ function PreviewList(_ref2) {
       getPreviewIcon = _ref2.getPreviewIcon;
 
   if (useChipsForPreview) {
+    fileObjects.sort(function (a, b) {
+      return a.file.type < b.file.type;
+    });
     return /*#__PURE__*/React.createElement(Grid, _extends({
       spacing: 1,
       direction: "row"
@@ -178,7 +183,10 @@ function PreviewList(_ref2) {
       return /*#__PURE__*/React.createElement(Grid, _extends({}, previewGridProps.item, {
         item: true,
         key: "".concat((_fileObject$file$name = (_fileObject$file = fileObject.file) === null || _fileObject$file === void 0 ? void 0 : _fileObject$file.name) !== null && _fileObject$file$name !== void 0 ? _fileObject$file$name : 'file', "-").concat(i),
-        className: classes.imageContainer
+        className: classes.imageContainer,
+        style: {
+          flexBasis: 'auto'
+        }
       }), /*#__PURE__*/React.createElement(Chip, _extends({
         variant: "outlined"
       }, previewChipProps, {
@@ -188,6 +196,9 @@ function PreviewList(_ref2) {
     }));
   }
 
+  fileObjects.sort(function (a, b) {
+    return a.file.type < b.file.type;
+  });
   return /*#__PURE__*/React.createElement(Grid, _extends({
     spacing: 8
   }, previewGridProps.container, {
@@ -201,7 +212,10 @@ function PreviewList(_ref2) {
     }, previewGridProps.item, {
       item: true,
       key: "".concat((_fileObject$file$name2 = (_fileObject$file2 = fileObject.file) === null || _fileObject$file2 === void 0 ? void 0 : _fileObject$file2.name) !== null && _fileObject$file$name2 !== void 0 ? _fileObject$file$name2 : 'file', "-").concat(i),
-      className: clsx(classes.imageContainer, previewGridClasses.item)
+      className: clsx(classes.imageContainer, previewGridClasses.item),
+      style: {
+        flexBasis: 'auto'
+      }
     }), getPreviewIcon(fileObject, classes), showFileNames && /*#__PURE__*/React.createElement(Typography, {
       variant: "body1",
       component: "p"
@@ -293,15 +307,17 @@ var defaultSnackbarAnchorOrigin = {
 var defaultGetPreviewIcon = function defaultGetPreviewIcon(fileObject, classes) {
   if (isImage(fileObject.file)) {
     return /*#__PURE__*/React.createElement("img", {
+      width: "100px",
       className: classes.image,
       role: "presentation",
       src: fileObject.data
     });
   }
 
-  return /*#__PURE__*/React.createElement(AttachFileIcon, {
-    className: classes.image
-  });
+  return /*#__PURE__*/React.createElement(Typography, {
+    variant: "body1",
+    component: "p"
+  }, fileObject.file.name);
 };
 /**
  * This components creates a Material-UI Dropzone, with previews and snackbar notifications.
